@@ -21,10 +21,12 @@ $employees = $statement->fetchAll(PDO::FETCH_ASSOC);
             <th>Name</th>
             <th>Address</th>
             <th>Salary</th>
-            <th>Actions</th>
+            
         </tr>
         <?php foreach ($employees as $employee): ?>
+            <?php if($employee['deleteFlag']==0) :?>
         <tr>
+            
             <td><?= $employee['id'] ?></td>
             <td><?= $employee['Name'] ?></td>
             <td><?= $employee['Address'] ?></td>
@@ -32,8 +34,11 @@ $employees = $statement->fetchAll(PDO::FETCH_ASSOC);
             <td>
                 <a href="update.php?id=<?= $employee['id'] ?>">Update</a>
                 <a href="delete.php?id=<?= $employee['id'] ?>">Delete</a>
+                <a href="read.php?id=<?= $employee['id'] ?>">view</a>
+
             </td>
         </tr>
+        <?php endif;?>
         <?php endforeach; ?>
     </table>
 </body>

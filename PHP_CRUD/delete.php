@@ -4,7 +4,7 @@ require_once 'config.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $query = "DELETE FROM Employees WHERE id = ?";
+    $query = "UPDATE Employees SET deleteFlag='1'  WHERE id = ?";
     $statement = $pdo->prepare($query);
     $statement->execute([$id]);
 
